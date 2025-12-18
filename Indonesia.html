@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indonesia: Ragam Bahasa & Budaya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ce1126;
+            --secondary: #2c3e50;
+            --light: #f4f7f6;
+            --white: #ffffff;
+        }
+
+        body { font-family: 'Poppins', sans-serif; margin: 0; background: var(--light); color: #333; }
+        header { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1596402184320-417d717867cd?auto=format&fit=crop&w=1200&q=80'); 
+                 height: 400px; background-size: cover; background-position: center; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
+        
+        .container { max-width: 1100px; margin: -50px auto 50px; padding: 0 20px; }
+        
+        /* Search Section */
+        .search-box { background: var(--white); padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        .search-box h2 { margin-top: 0; color: var(--secondary); }
+        .input-group { display: flex; gap: 10px; margin-bottom: 20px; }
+        input[type="text"] { flex: 1; padding: 12px 20px; border: 2px solid #ddd; border-radius: 30px; outline: none; transition: 0.3s; }
+        input[type="text"]:focus { border-color: var(--primary); }
+        
+        .filter-buttons { display: flex; flex-wrap: wrap; gap: 10px; }
+        .filter-btn { background: #eee; border: none; padding: 8px 18px; border-radius: 20px; cursor: pointer; transition: 0.3s; }
+        .filter-btn.active, .filter-btn:hover { background: var(--primary); color: white; }
+
+        /* Language Cards */
+        .lang-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .lang-card { background: white; border-radius: 15px; padding: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-left: 5px solid var(--primary); transition: 0.3s; }
+        .lang-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .lang-card h3 { margin: 0 0 10px 0; color: var(--primary); }
+        .lang-card p { font-size: 0.9rem; color: #666; }
+        .tag { display: inline-block; background: #ffebee; color: var(--primary); padding: 2px 10px; border-radius: 10px; font-size: 0.7rem; font-weight: bold; margin-bottom: 10px; }
+
+        /* Comparison Table */
+        .comparison-table { width: 100%; border-collapse: collapse; background: white; border-radius: 15px; overflow: hidden; margin-top: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .comparison-table th { background: var(--secondary); color: white; padding: 15px; text-align: left; }
+        .comparison-table td { padding: 15px; border-bottom: 1px solid #eee; }
+        .comparison-table tr:hover { background: #f9f9f9; }
+
+        /* Floating WhatsApp */
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); text-decoration: none; z-index: 999; }
+        
+        footer { background: var(--secondary); color: white; padding: 40px 0; text-align: center; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Laboratorium Bahasa Nusantara</h1>
+    <p>Mengenal lebih dekat 718+ Bahasa Daerah di Indonesia</p>
+</header>
+
+<div class="container">
+    <section class="search-box">
+        <h2>Cari Bahasa Daerah</h2>
+        <div class="input-group">
+            <input type="text" id="searchInput" placeholder="Ketik nama bahasa atau wilayah (contoh: Sunda)..." onkeyup="filterLanguages()">
+        </div>
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterCategory('semua')">Semua</button>
+            <button class="filter-btn" onclick="filterCategory('sumatera')">Sumatera</button>
+            <button class="filter-btn" onclick="filterCategory('jawa')">Jawa</button>
+            <button class="filter-btn" onclick="filterCategory('kalimantan')">Kalimantan</button>
+            <button class="filter-btn" onclick="filterCategory('sulawesi')">Sulawesi</button>
+            <button class="filter-btn" onclick="filterCategory('papua')">Papua</button>
+        </div>
+    </section>
+
+    <div class="lang-grid" id="langGrid">
+        <div class="lang-card" data-region="jawa">
+            <span class="tag">JAWA</span>
+            <h3>Bahasa Jawa</h3>
+            <p>Bahasa dengan penutur terbanyak di Indonesia. Memiliki tingkatan tutur (Ngoko, Krama Madya, Krama Inggil).</p>
+            <strong>Contoh:</strong> "Sugeng Enjang" (Selamat Pagi)
+        </div>
+
+        <div class="lang-card" data-region="sumatera">
+            <span class="tag">SUMATERA</span>
+            <h3>Bahasa Minangkabau</h3>
+            <p>Digunakan di Sumatera Barat. Memiliki kemiripan dengan Bahasa Melayu namun dengan dialek khas.</p>
+            <strong>Contoh:</strong> "Apo Kaba?" (Apa Kabar?)
+        </div>
+
+        <div class="lang-card" data-region="sulawesi">
+            <span class="tag">SULAWESI</span>
+            <h3>Bahasa Bugis</h3>
+            <p>Bahasa suku Bugis di Sulawesi Selatan. Memiliki aksara sendiri yang disebut Lontara.</p>
+            <strong>Contoh:</strong> "Kega mamanu?" (Mau ke mana?)
+        </div>
+
+        <div class="lang-card" data-region="papua">
+            <span class="tag">PAPUA</span>
+            <h3>Bahasa Dani</h3>
+            <p>Salah satu bahasa utama di wilayah pegunungan tengah Papua (Lembah Baliem).</p>
+            <strong>Contoh:</strong> "Nayakhak" (Terima kasih)
+        </div>
+
+        <div class="lang-card" data-region="kalimantan">
+            <span class="tag">KALIMANTAN</span>
+            <h3>Bahasa Banjar</h3>
+            <p>Bahasa ibu suku Banjar di Kalimantan Selatan yang juga menjadi lingua franca di Kalimantan.</p>
+            <strong>Contoh:</strong> "Mun baisukan" (Kalau pagi hari)
+        </div>
+
+        <div class="lang-card" data-region="jawa">
+            <span class="tag">JAWA</span>
+            <h3>Bahasa Sunda</h3>
+            <p>Bahasa daerah terbesar kedua, digunakan di wilayah Jawa Barat dan Banten.</p>
+            <strong>Contoh:</strong> "Wilujeng Sumping" (Selamat Datang)
+        </div>
+    </div>
+
+    <h2 style="margin-top: 50px;">Perbandingan Kata Dasar</h2>
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th>Indonesia</th>
+                <th>Jawa</th>
+                <th>Sunda</th>
+                <th>Batak</th>
+                <th>Dayak</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Makan</td>
+                <td>Mangan</td>
+                <td>Dahar</td>
+                <td>Mangan</td>
+                <td>Kuman</td>
+            </tr>
+            <tr>
+                <td>Minum</td>
+                <td>Ngombe</td>
+                <td>Nueum</td>
+                <td>Minum</td>
+                <td>Mihup</td>
+            </tr>
+            <tr>
+                <td>Satu</td>
+                <td>Siji</td>
+                <td>Hiji</td>
+                <td>Sada</td>
+                <td>Ije</td>
+            </tr>
+            <tr>
+                <td>Cinta</td>
+                <td>Tresno</td>
+                <td>Nyaah</td>
+                <td>Holong</td>
+                <td>Sinta</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<a href="https://wa.me/628123456789" class="wa-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<footer>
+    <p>&copy; 2025 Pesona Bahasa Indonesia. Lestari Bahasaku, Jaya Negaraku.</p>
+</footer>
+
+<script>
+    function filterLanguages() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let cards = document.getElementsByClassName('lang-card');
+
+        for (let i = 0; i < cards.length; i++) {
+            let title = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+            let desc = cards[i].innerText.toLowerCase();
+            if (title.includes(input) || desc.includes(input)) {
+                cards[i].style.display = "";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
+
+    function filterCategory(region) {
+        let cards = document.getElementsByClassName('lang-card');
+        let btns = document.getElementsByClassName('filter-btn');
+        
+        // Update button active state
+        for (let b of btns) b.classList.remove('active');
+        event.target.classList.add('active');
+
+        for (let i = 0; i < cards.length; i++) {
+            if (region === 'semua' || cards[i].getAttribute('data-region') === region) {
+                cards[i].style.display = "";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
